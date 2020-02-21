@@ -14,6 +14,20 @@ app.get("", (req, res) => {
   });
 });
 
+app.get("/about", (req, res) => {
+  res.render("about", {
+    title: "About Me",
+    name: "Ricardo Castaneda"
+  });
+});
+
+app.get("/help", (req, res) => {
+  res.render("help", {
+    title: "Help Page",
+    helpText: "This is a helpful text"
+  });
+});
+
 app.get("/weather", (req, res) => {
   res.send({
     location: "San Diego",
