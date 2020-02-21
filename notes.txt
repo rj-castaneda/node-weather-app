@@ -1,0 +1,3 @@
+express is more like a function rather than an object
+
+express library exposes a single function as opposed to something like an object and we call it to create a new express application
