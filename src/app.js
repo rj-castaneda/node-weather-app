@@ -8,7 +8,10 @@ app.set("view engine", "hbs");
 app.use(express.static(pathToPublic));
 
 app.get("", (req, res) => {
-  res.send("index");
+  res.render("index", {
+    title: "Weather",
+    name: "Ricardo Castaneda"
+  });
 });
 
 app.get("/weather", (req, res) => {
