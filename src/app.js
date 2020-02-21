@@ -2,8 +2,9 @@ const path = require("path");
 const express = require("express");
 
 const app = express();
-
 const pathToPublic = path.join(__dirname, "../public");
+
+app.set("view engine", "hbs");
 app.use(express.static(pathToPublic));
 
 app.get("/weather", (req, res) => {
