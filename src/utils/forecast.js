@@ -1,0 +1,29 @@
+const request = require("request");
+
+const forecast = (latitude, longitude, callback) => {
+  const url =
+    "https://api.darksky.net/forecast/23f10f02a9e4ea267b335a8e7379153a/" +
+    latitude +
+    "," +
+    longitude;
+
+  request({ url, json: true }, (e, { body }) => {
+    if (e) {
+      callback("Unable to connect", undefined);
+    } else if (body.error) {
+      callback("undable to find location", undefined);
+    } else {
+      callback(
+        undefined,
+        body.daily.data[0].summary +
+          " It is currently " +
+          body.currently.temperature +
+          " degress out and there is a " +
+          body.currently.precipProbability +
+          "% chance of rain."
+      );
+    }
+  });
+};
+
+module.exports = forecast;
