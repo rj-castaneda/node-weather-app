@@ -1,5 +1,5 @@
 # npm modules
-node_modules
+./node_modules/
 
 # notes
-notes.txt
+./notes.txt
