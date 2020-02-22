@@ -1,19 +1,23 @@
-// API to fetch from : puzzle.mead.io/puzzle
+// const url = "http://localhost:3000/weather/?address=" + location;
 
-// fetch("http://puzzle.mead.io/puzzle").then(response => {
-//   return response.json().then(data => {
-//     console.log(data);
-//   });
-// });
+const inputLocEl = document.getElementById("input-form");
+const message1 = document.querySelector("#message-1");
+const message2 = document.querySelector("#message-2");
+text.focus();
 
-const url = "http://localhost:3000/weather/?address=boston";
-fetch(url).then(response => {
-  return response.json().then(data => {
-    if (data.error) {
-      console.log(data.error);
-    } else {
-      console.log(data.location);
-      console.log(data.forecast);
-    }
+inputLocEl.addEventListener("submit", e => {
+  e.preventDefault();
+  const location = e.target[0].value;
+  message1.textContent = "";
+  message2.textContent = "";
+  fetch(`http://localhost:3000/weather/?address=${location}`).then(response => {
+    return response.json().then(data => {
+      if (data.error) {
+        message1.textContent = data.error;
+      } else {
+        message1.textContent = data.location;
+        message2.textContent = data.forecast;
+      }
+    });
   });
 });
