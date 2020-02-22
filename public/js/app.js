@@ -10,7 +10,7 @@ inputLocEl.addEventListener("submit", e => {
   const location = e.target[0].value;
   message1.textContent = "";
   message2.textContent = "";
-  fetch(`http://localhost:3000/weather/?address=${location}`).then(response => {
+  fetch(`/weather/?address=${location}`).then(response => {
     return response.json().then(data => {
       if (data.error) {
         message1.textContent = data.error;
